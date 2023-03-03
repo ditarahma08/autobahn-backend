@@ -23,14 +23,18 @@ let UserController = class UserController {
         this.jwtService = jwtService;
     }
     async Signup(response, user) {
-        const newUSer = await this.userServerice.signup(user);
+        const newUser = await this.userServerice.signup(user);
         return response.status(common_1.HttpStatus.CREATED).json({
-            newUSer
+            newUser,
+            status: true
         });
     }
     async SignIn(response, user) {
-        const token = await this.userServerice.signin(user, this.jwtService);
-        return response.status(common_1.HttpStatus.OK).json(token);
+        const data = await this.userServerice.signin(user, this.jwtService);
+        return response.status(common_1.HttpStatus.OK).json({
+            data,
+            status: true
+        });
     }
 };
 __decorate([

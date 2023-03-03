@@ -25,11 +25,13 @@ export class UserService {
     async signin(user: User, jwt: JwtService): Promise<any> {
         const foundUser = await this.userModel.findOne({ email: user.email }).exec();
         if (foundUser) {
-            const { password } = foundUser;
+            const { password, fullname, email } = foundUser;
             if (bcrypt.compare(user.password, password)) {
                 const payload = { email: user.email };
                 return {
                     token: jwt.sign(payload),
+                    username: fullname,
+                    email: email
                 };
             }
             return new HttpException('Incorrect username or password', HttpStatus.UNAUTHORIZED)

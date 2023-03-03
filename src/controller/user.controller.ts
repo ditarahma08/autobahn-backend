@@ -11,14 +11,18 @@ export class UserController {
 
     @Post('/signup')
     async Signup(@Res() response, @Body() user: User) {
-        const newUSer = await this.userServerice.signup(user);
+        const newUser = await this.userServerice.signup(user);
         return response.status(HttpStatus.CREATED).json({
-            newUSer
+            newUser,
+            status: true
         })
     }
     @Post('/signin')
     async SignIn(@Res() response, @Body() user: User) {
-        const token = await this.userServerice.signin(user, this.jwtService);
-        return response.status(HttpStatus.OK).json(token)
+        const data = await this.userServerice.signin(user, this.jwtService);
+        return response.status(HttpStatus.OK).json({
+            data,
+            status: true
+        })
     }
 }
