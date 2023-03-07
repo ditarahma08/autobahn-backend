@@ -12,16 +12,16 @@ export class ChartService {
         const reqBody = {
             labels: chart.labels,
             datasets: chart.datasets,
-            color: chart.color
+            color: chart.color,
+            userId: chart.userId
         }
         const newChart = new this.chartModel(reqBody);
         return newChart.save();
     }
 
-    async readChart(user: string, response: Response, request: Request) {
-        if (user) {
-            return this.chartModel.findOne({ _user: user }).populate("createdBy").exec();
+    async readChart(id: string, response: Response, request: Request) {
+        if (id) {
+            return this.chartModel.findOne({ userId: id })
         }
-        return this.chartModel.find().populate("createdBy").exec();
     }
 }

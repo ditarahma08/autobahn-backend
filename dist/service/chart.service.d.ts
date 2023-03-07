@@ -28,9 +28,7 @@ export declare class ChartService {
     private chartModel;
     constructor(chartModel: Model<ChartDocument>);
     addChart(chart: Chart): Promise<Chart>;
-    readChart(user: string, response: Response, request: Request): Promise<(import("mongoose").Document<unknown, any, ChartDocument> & Omit<Chart & Document & {
+    readChart(id: string, response: Response, request: Request): Promise<import("mongoose").Document<unknown, any, ChartDocument> & Omit<Chart & Document & {
         _id: import("mongoose").Types.ObjectId;
-    }, never>) | Omit<import("mongoose").Document<unknown, any, ChartDocument> & Omit<Chart & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    }, never>, never>[]>;
+    }, never>>;
 }

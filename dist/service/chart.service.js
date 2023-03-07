@@ -26,16 +26,15 @@ let ChartService = class ChartService {
             labels: chart.labels,
             datasets: chart.datasets,
             color: chart.color,
-            createdBy: chart.createdBy
+            userId: chart.userId
         };
         const newChart = new this.chartModel(reqBody);
         return newChart.save();
     }
-    async readChart(user, response, request) {
-        if (user) {
-            return this.chartModel.findOne({ _user: user }).populate("createdBy").exec();
+    async readChart(id, response, request) {
+        if (id) {
+            return this.chartModel.findOne({ userId: id });
         }
-        return this.chartModel.find().populate("createdBy").exec();
     }
 };
 ChartService = __decorate([

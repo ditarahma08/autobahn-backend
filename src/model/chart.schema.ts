@@ -11,6 +11,8 @@ export class Chart {
     datasets: number[]
     @Prop({ requierd: true })
     color: string
+    @Prop({ required: true })
+    userId: string
 }
 
 export const ChartSchema = SchemaFactory.createForClass(Chart)

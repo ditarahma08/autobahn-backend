@@ -29,9 +29,7 @@ export declare class ChartController {
     private readonly chartService;
     constructor(chartService: ChartService);
     Add(response: any, chart: Chart): Promise<any>;
-    Read(user: any, response: any, request: any): Promise<(import("mongoose").Document<unknown, any, import("../model/chart.schema").ChartDocument> & Omit<Chart & Document & {
+    Read(user: any, response: any, request: any): Promise<import("mongoose").Document<unknown, any, import("../model/chart.schema").ChartDocument> & Omit<Chart & Document & {
         _id: import("mongoose").Types.ObjectId;
-    }, never>) | Omit<import("mongoose").Document<unknown, any, import("../model/chart.schema").ChartDocument> & Omit<Chart & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    }, never>, never>[]>;
+    }, never>>;
 }
