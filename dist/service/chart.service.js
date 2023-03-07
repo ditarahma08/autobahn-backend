@@ -25,6 +25,7 @@ let ChartService = class ChartService {
         const reqBody = {
             labels: chart.labels,
             datasets: chart.datasets,
+            color: chart.color,
             createdBy: chart.createdBy
         };
         const newChart = new this.chartModel(reqBody);

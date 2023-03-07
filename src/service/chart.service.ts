@@ -12,7 +12,7 @@ export class ChartService {
         const reqBody = {
             labels: chart.labels,
             datasets: chart.datasets,
-            createdBy: chart.createdBy
+            color: chart.color
         }
         const newChart = new this.chartModel(reqBody);
         return newChart.save();
