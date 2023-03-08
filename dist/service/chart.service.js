@@ -26,15 +26,16 @@ let ChartService = class ChartService {
             labels: chart.labels,
             datasets: chart.datasets,
             color: chart.color,
+            score: chart.score,
+            scoreChange: chart.scoreChange,
             userId: chart.userId
         };
         const newChart = new this.chartModel(reqBody);
         return newChart.save();
     }
-    async readChart(id, response, request) {
-        if (id) {
-            return this.chartModel.findOne({ userId: id });
-        }
+    async readChart(id) {
+        const foundChart = await this.chartModel.findOne({ userId: id }).exec();
+        return foundChart;
     }
 };
 ChartService = __decorate([

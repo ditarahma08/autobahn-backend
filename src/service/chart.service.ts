@@ -13,15 +13,16 @@ export class ChartService {
             labels: chart.labels,
             datasets: chart.datasets,
             color: chart.color,
+            score: chart.score,
+            scoreChange: chart.scoreChange,
             userId: chart.userId
         }
         const newChart = new this.chartModel(reqBody);
         return newChart.save();
     }
 
-    async readChart(id: string, response: Response, request: Request) {
-        if (id) {
-            return this.chartModel.findOne({ userId: id })
-        }
+    async readChart(id): Promise<Chart> {
+        const foundChart =  await this.chartModel.findOne({ userId: id }).exec()
+        return foundChart
     }
 }

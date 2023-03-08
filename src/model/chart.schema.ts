@@ -11,6 +11,10 @@ export class Chart {
     datasets: number[]
     @Prop({ requierd: true })
     color: string
+    @Prop({ required: true})
+    score: number
+    @Prop({ required: true })
+    scoreChange: number
     @Prop({ required: true })
     userId: string
 }

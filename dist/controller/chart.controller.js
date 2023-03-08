@@ -27,8 +27,9 @@ let ChartController = class ChartController {
             status: true
         });
     }
-    async Read(user, response, request) {
-        return this.chartService.readChart(user, response, request);
+    async Read(id, response) {
+        const chartData = await this.chartService.readChart(id);
+        return response.status(common_1.HttpStatus.OK).json(chartData);
     }
 };
 __decorate([
@@ -40,12 +41,11 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ChartController.prototype, "Add", null);
 __decorate([
-    (0, common_1.Get)('/:user'),
-    __param(0, (0, common_1.Param)('user')),
+    (0, common_1.Get)('/:id'),
+    __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Res)()),
-    __param(2, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object, Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], ChartController.prototype, "Read", null);
 ChartController = __decorate([

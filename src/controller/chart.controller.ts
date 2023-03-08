@@ -16,8 +16,9 @@ export class ChartController {
         })
     }
 
-    @Get('/:user')
-    async Read(@Param('user') user, @Res() response, @Req() request) {
-        return this.chartService.readChart(user, response, request)
+    @Get('/:id')
+    async Read(@Param('id') id, @Res() response) {
+        const chartData = await this.chartService.readChart(id)
+        return response.status(HttpStatus.OK).json(chartData)
     }
 }

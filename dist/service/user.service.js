@@ -42,7 +42,8 @@ let UserService = class UserService {
                 return {
                     token: jwt.sign(payload),
                     username: fullname,
-                    email: email
+                    email: email,
+                    id: foundUser._id
                 };
             }
             return new common_1.HttpException('Incorrect username or password', common_1.HttpStatus.UNAUTHORIZED);

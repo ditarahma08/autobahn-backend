@@ -27,6 +27,14 @@ __decorate([
 ], Chart.prototype, "color", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", Number)
+], Chart.prototype, "score", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", Number)
+], Chart.prototype, "scoreChange", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Chart.prototype, "userId", void 0);
 Chart = __decorate([
