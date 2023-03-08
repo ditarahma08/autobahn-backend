@@ -18,23 +18,27 @@ const user_schema_1 = require("../model/user.schema");
 const user_service_1 = require("../service/user.service");
 const jwt_1 = require("@nestjs/jwt");
 let UserController = class UserController {
-    constructor(userServerice, jwtService) {
-        this.userServerice = userServerice;
+    constructor(userService, jwtService) {
+        this.userService = userService;
         this.jwtService = jwtService;
     }
     async Signup(response, user) {
-        const newUser = await this.userServerice.signup(user);
+        const newUser = await this.userService.signup(user);
         return response.status(common_1.HttpStatus.CREATED).json({
             newUser,
             status: true
         });
     }
     async SignIn(response, user) {
-        const data = await this.userServerice.signin(user, this.jwtService);
+        const data = await this.userService.signin(user, this.jwtService);
         return response.status(common_1.HttpStatus.OK).json({
             data,
             status: true
         });
+    }
+    async GetOne(id, response) {
+        const userData = await this.userService.getOne(id);
+        return response.status(common_1.HttpStatus.OK).json(userData);
     }
 };
 __decorate([
@@ -53,6 +57,14 @@ __decorate([
     __metadata("design:paramtypes", [Object, user_schema_1.User]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "SignIn", null);
+__decorate([
+    (0, common_1.Get)('/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "GetOne", null);
 UserController = __decorate([
     (0, common_1.Controller)('/api/v1/user'),
     __metadata("design:paramtypes", [user_service_1.UserService,
